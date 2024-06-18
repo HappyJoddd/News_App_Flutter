@@ -1,4 +1,3 @@
-import 'package:carousel_slider/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/Pages/HomePage/Widgets/CategoryTile.dart';
 import 'package:news_app/Services/Data.dart';
