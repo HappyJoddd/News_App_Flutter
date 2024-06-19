@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Pages/HomePage/homepage.dart';
+import 'package:get/get.dart';
+import 'package:news_app/Pages/Landing%20Page/LandingPage.dart';
+import 'package:news_app/Routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      getPages: AppRoutes.getRoutes(),
     );
   }
 }
