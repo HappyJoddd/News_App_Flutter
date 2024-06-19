@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/Pages/HomePage/Widgets/BlogTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/CategoryTile.dart';
@@ -19,7 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<CategoryModel> categories = [];
-  List<SliderModel> sliders = [];
+  List<sliderModel> sliders = [];
   List<ArticleModel> articles = [];
   bool _loading = true;
 
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     categories = getCategories();
-    sliders = getSliders();
+    getSlider();
     getNews();
     super.initState();
   }
@@ -41,6 +42,13 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  getSlider() async {
+    Sliders slider = Sliders();
+    await slider.getSlider();
+    sliders = slider.sliders;
+  }
+
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,10 +122,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: 10),
                     CarouselSlider.builder(
-                        itemCount: sliders.length,
+                        itemCount: 5,
                         itemBuilder: (context, index, realIndex) {
-                          String? res = sliders[index].image;
-                          String? res1 = sliders[index].name;
+                          String? res = sliders[index].urlToImage;
+                          String? res1 = sliders[index].title;
                           return buildImage(res!, index, res1!);
                         },
                         options: CarouselOptions(
@@ -165,6 +173,7 @@ class _HomePageState extends State<HomePage> {
                           itemCount: articles.length,
                           itemBuilder: (context, index) {
                             return BlogTile(
+                                blogUrl: articles[index].url!,
                                 desc: articles[index].description!,
                                 imageUrl: articles[index].urlToImage!,
                                 title: articles[index].title!);
@@ -182,7 +191,8 @@ class _HomePageState extends State<HomePage> {
       child: Stack(children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: Image.asset(image,
+          child: CachedNetworkImage(
+              imageUrl: image,
               height: 250,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width),
@@ -196,16 +206,19 @@ class _HomePageState extends State<HomePage> {
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10))),
-          child: Text(name,
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500)),
+          child: Center(
+            child: Text(name,
+                maxLines: 3,
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500)),
+          ),
         ),
       ]));
   Widget buildIndicator() => AnimatedSmoothIndicator(
         activeIndex: activeIndex,
-        count: sliders.length,
+        count: 5,
         effect: WormEffect(
             activeDotColor: Colors.blue, dotHeight: 20, dotWidth: 20),
       );

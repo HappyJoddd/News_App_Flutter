@@ -14,7 +14,7 @@ List<CategoryModel> getCategories() {
   category.add(categoryModel);
   categoryModel = new CategoryModel();
 
-  categoryModel.categoryName = "General";
+  categoryModel.categoryName = "Technology";
   categoryModel.image = 'images/general.jpeg';
   category.add(categoryModel);
   categoryModel = new CategoryModel();

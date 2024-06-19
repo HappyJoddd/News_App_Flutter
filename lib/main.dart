@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news_app/Pages/Landing%20Page/LandingPage.dart';
 import 'package:news_app/Routes/routes.dart';
 
 void main() {

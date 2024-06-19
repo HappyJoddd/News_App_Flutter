@@ -1,15 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class ArticleView extends StatefulWidget {
+  String blogUrl;
+  ArticleView({required this.blogUrl});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<ArticleView> createState() => _ArticleViewState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _ArticleViewState extends State<ArticleView> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Pocket",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "News",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          centerTitle: true,
+          elevation: 0.0,
+        ),
+        body: Container(
+          child: WebView(
+            initialUrl: widget.blogUrl,
+            javascriptMode: JavascriptMode.unrestricted,
+          ),
+        ));
   }
 }

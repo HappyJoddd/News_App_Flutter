@@ -1,15 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:news_app/Pages/ArticlePage/ArticlePage.dart';
+import 'package:news_app/models/article_model.dart';
 
+// ignore: must_be_immutable
 class BlogTile extends StatelessWidget {
-  String imageUrl, title, desc;
-  BlogTile({required this.desc, required this.imageUrl, required this.title});
+  String? imageUrl, title, desc, blogUrl;
+  BlogTile(
+      {required this.desc,
+      required this.imageUrl,
+      required this.title,
+      required this.blogUrl});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ArticleView(blogUrl: blogUrl!)));
+      },
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
         child: Padding(
@@ -27,7 +38,7 @@ class BlogTile extends StatelessWidget {
                       height: 130,
                       width: 130,
                       fit: BoxFit.cover,
-                      imageUrl: imageUrl,
+                      imageUrl: imageUrl!,
                     ),
                   ),
                 ),
@@ -37,7 +48,7 @@ class BlogTile extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width / 1.7,
                       child: Text(
-                        title,
+                        title!,
                         maxLines: 2,
                         style: TextStyle(
                             color: Colors.black,
@@ -49,7 +60,7 @@ class BlogTile extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width / 1.7,
                       child: Text(
-                        desc,
+                        desc!,
                         maxLines: 4,
                         style: TextStyle(
                             color: Colors.black,
