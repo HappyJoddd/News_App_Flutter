@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:news_app/Pages/Category/category_news.dart';
 
 class CatergoryTile extends StatelessWidget {

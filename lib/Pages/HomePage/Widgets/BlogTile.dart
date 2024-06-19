@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/Pages/ArticlePage/ArticlePage.dart';
-import 'package:news_app/models/article_model.dart';
 
 // ignore: must_be_immutable
 class BlogTile extends StatelessWidget {

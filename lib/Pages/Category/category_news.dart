@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:news_app/Pages/ArticlePage/ArticlePage.dart';
-import 'package:news_app/Pages/HomePage/Widgets/BlogTile.dart';
 import 'package:news_app/Services/Category_data.dart';
 import 'package:news_app/models/SHow_Categories.dart';
 
@@ -17,6 +16,7 @@ class CategoryNews extends StatefulWidget {
 
 class _CategoryNewsState extends State<CategoryNews> {
   List<ShowCategoryModel> categories = [];
+  // ignore: unused_field
   bool _loading = true;
   @override
   void initState() {
