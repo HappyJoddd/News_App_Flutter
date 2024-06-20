@@ -17,7 +17,6 @@ class Allnews extends StatefulWidget {
 class _AllnewsState extends State<Allnews> {
   List<sliderModel> sliders = [];
   List<ArticleModel> articles = [];
-  bool _loading = true;
 
   void initState() {
     getSlider();
