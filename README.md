@@ -49,3 +49,7 @@ Breaking News View All Screenshot:
 ![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwyyGy-7AyQ_LcYYR-38c0NJYzHa5ArVanMJ2772sXPe9JEhzmXvnK95kqQJn3NZogUSC9Iz3o3jmJ0YOhADwAW-CkdbUNoQUxH7KAb-yNDQNxlUmvibwXQ9flHBrQ4g8uBzm8xfrsPbdPI3yrE9ZKYNmCaa2yWV8Lf0-9jf7j-jtCUJ6VkD1PbJindCum/s2301/BreakingNews.jpg)
 Trending News View All Screenshot:
 ![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-Xk4-rE2F63gCOferjL8CQIZahSBFL1zBZLgP5bLh0Y1JBsH9AC4kkf_M9ORji-2XvUGF2ABK2AVGkmX8qRYzA2mt6kcFqX6E9w5-HJvviq9DVrL0ucpyXeoyQ62cVxaGQu9t6njJQ8lebEThG2VwHk9E-TJNtWuRV5J3QvatNwIoXNXx9frARaM2uXFf/s2317/TrendingNews.jpg)
+
+## Authors
+
+- [@HitarthBhatt](https://github.com/HappyJoddd)
