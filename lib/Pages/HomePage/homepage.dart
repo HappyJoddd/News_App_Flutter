@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/Pages/AllNews/AllNews.dart';
+import 'package:news_app/Pages/ArticlePage/ArticlePage.dart';
 import 'package:news_app/Pages/HomePage/Widgets/BlogTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/CategoryTile.dart';
 import 'package:news_app/Services/Data.dart';
@@ -48,7 +50,6 @@ class _HomePageState extends State<HomePage> {
     sliders = slider.sliders;
   }
 
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,13 +110,22 @@ class _HomePageState extends State<HomePage> {
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Poppins'),
                           ),
-                          Text(
-                            "View All",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Poppins'),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Allnews(news: "Breaking")));
+                            },
+                            child: Text(
+                              "View All",
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Poppins'),
+                            ),
                           ),
                         ],
                       ),
@@ -126,7 +136,13 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index, realIndex) {
                           String? res = sliders[index].urlToImage;
                           String? res1 = sliders[index].title;
-                          return buildImage(res!, index, res1!);
+                          String? res2 = sliders[index].url;
+                          return buildImage(
+                            res!,
+                            index,
+                            res1!,
+                            res2!
+                          );
                         },
                         options: CarouselOptions(
                             height: 250,
@@ -154,13 +170,22 @@ class _HomePageState extends State<HomePage> {
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Poppins'),
                           ),
-                          Text(
-                            "View All",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Poppins'),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Allnews(news: "Trending")));
+                            },
+                            child: Text(
+                              "View All",
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Poppins'),
+                            ),
                           ),
                         ],
                       ),
@@ -186,36 +211,43 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildImage(String image, int index, String name) => Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      child: Stack(children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: CachedNetworkImage(
-              imageUrl: image,
-              height: 250,
-              fit: BoxFit.cover,
-              width: MediaQuery.of(context).size.width),
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 10),
-          margin: EdgeInsets.only(top: 170),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-              color: Colors.black38,
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10))),
-          child: Center(
-            child: Text(name,
-                maxLines: 3,
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500)),
-          ),
-        ),
-      ]));
+  Widget buildImage(String image, int index, String name, String url) =>
+      GestureDetector(
+        onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url)));
+      },
+        child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            child: Stack(children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: CachedNetworkImage(
+                    imageUrl: image,
+                    height: 250,
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.only(top: 170),
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: Colors.black38,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
+                child: Center(
+                  child: Text(name,
+                      maxLines: 3,
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500)),
+                ),
+              ),
+            ])),
+      );
   Widget buildIndicator() => AnimatedSmoothIndicator(
         activeIndex: activeIndex,
         count: 5,
